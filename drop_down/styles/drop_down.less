@@ -1,0 +1,83 @@
+@listWidth: 100px;
+@borderRadius: 5px;
+@bgColor: #444;
+@arrowWidth: 7px;
+@hoverBgColor: #58a;
+.yuchen-drop-down,
+.yuchen-drop-down ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.yuchen-drop-down a {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  color: white;
+  font-family: Arial;
+  padding: 10px 20px;
+  background: @bgColor;
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
+}
+.yuchen-drop-down li {
+  position: relative;
+  width: @listWidth;
+}
+/* hide dropdown */
+.yuchen-drop-down li > ul {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  margin-top: 10px;
+  transition: all 0.1s linear;
+}
+/* end hide dropdown */
+
+/* show dropdown */
+.yuchen-drop-down li:hover > ul {
+  opacity: 1;
+  visibility: visible;
+  margin-top: 0;
+}
+/* end show dropdown */
+
+/* 3D bottom shadow */
+.yuchen-drop-down li li a {
+  box-shadow: inset 0 -1px 0 #666, inset 0 -2px 0 #111;
+}
+.yuchen-drop-down li li:last-child a {
+  box-shadow: none;
+}
+/* end 3D bottom shadow */
+
+/* arrow of the list */
+.yuchen-drop-down li:hover li:first-child::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: @arrowWidth transparent solid;
+  left: 50%;
+  top: calc(-2*@arrowWidth);
+  transform: translateX(-50%);
+  border-bottom-color: @bgColor;
+}
+/* end arrow of the list */
+
+/* change backgroundColor when mouse hover */
+.yuchen-drop-down li li:hover a {
+  background-color: @hoverBgColor;
+}
+.yuchen-drop-down li li:first-child:hover::before {
+  border-bottom-color: @hoverBgColor;
+}
+/* end change backgroundColor when mouse hover */
+
+.yuchen-drop-down li:first-child > a {
+  border-top-left-radius: @borderRadius;
+  border-top-right-radius: @borderRadius;
+}
+.yuchen-drop-down li:last-child > a {
+  border-bottom-left-radius: @borderRadius;
+  border-bottom-right-radius: @borderRadius;
+}
